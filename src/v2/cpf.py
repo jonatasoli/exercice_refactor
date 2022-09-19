@@ -26,20 +26,16 @@ def _calculate_cpf_solution(cpf: str) -> str:
 
 
 def validate_cpf(cpf: str) -> bool:
-    if cpf is None:
-        return False
+    if cpf is None or cpf == '':
+        raise(Exception('CPF is None or Empty'))
     if not _is_valid_cpf_digits(cpf):
-        return False
+        raise(Exception('CPF incomplete digits'))
     cpf = _remove_cpf_special_caracters(cpf)
-    if not len(set(cpf)) == 1:
-        try:
-            digit_number_checker = cpf[len(cpf) - 2 : len(cpf)]
-            digit_number_checker_solution = _calculate_cpf_solution(cpf)
-            return digit_number_checker == digit_number_checker_solution
-        except Exception as e:
-            print('Erro !' + str(e))
-
-            return False
-
-    else:
-        return False
+    if len(set(cpf)) == 1:
+        raise(Exception('CPF is the same caractere in all digits'))
+    try:
+        digit_number_checker = cpf[len(cpf) - 2 : len(cpf)]
+        digit_number_checker_solution = _calculate_cpf_solution(cpf)
+        return digit_number_checker == digit_number_checker_solution
+    except Exception as e:
+        raise(e)
