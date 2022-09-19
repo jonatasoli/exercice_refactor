@@ -1,50 +1,68 @@
-def validate(_str):
-    if _str != None:
-        if _str != "":
-            if len(_str) >= 11 and len(_str) <= 14:
-                _str=_str.replace('.','').replace('.','').replace('-','').replace(" ","")
-                if not len(set(_str)) == 1:
+def validate_cpf(cpf):
+    if cpf != None:
+        if cpf != '':
+            if len(cpf) >= 11 and len(cpf) <= 14:
+                cpf = (
+                    cpf.replace('.', '')
+                    .replace('.', '')
+                    .replace('-', '')
+                    .replace(' ', '')
+                )
+                if not len(set(cpf)) == 1:
                     try:
-                        d1 = d2 = 0
-                        dg1 = dg2 = rest = 0
-                        digito = None
-                        nDigResult = None
-                            
-                        for nCount in range(1, (len(_str) - 1)):
-                            # if not int(_str[nCount -1: nCount])
+                        check_fist_digit = check_second_digit = 0
+                        first_digit = second_digit = rest_number_checker = 0
+                        digit_index = None
+                        digit_number_checker_solution = None
+
+                        for cpf_index in range(1, (len(cpf) - 1)):
+                            # if not int(cpf[cpf_index -1: cpf_index])
                             # 	return false
                             # else
-            
-                            digito = int(_str[nCount -1: nCount])  							
-                            d1 = d1 + ( 11 - nCount ) * digito  
-                    
-                            d2 = d2 + ( 12 - nCount ) * digito  
-                            
-                        rest = (d1 % 11)  
-                
-                        dg1 = dg1 = 0 if rest < 2 else 11 - rest  
-                        d2 += 2 * dg1  
-                        rest = (d2 % 11)  
-                        if rest < 2:  
-                            dg2 = 0  
-                        else:  
-                            dg2 = 11 - rest  
-                
-                        nDigVerific = _str[len(_str)-2: len(_str)]  
-                        nDigResult = "" + str(dg1) + "" + str(dg2)  
-                        return nDigVerific == nDigResult
-                    except Exception as e:  
-                        print("Erro !"+str(e)  )
-            
+
+                            digit_index = int(cpf[cpf_index - 1 : cpf_index])
+                            check_fist_digit = (
+                                check_fist_digit
+                                + (11 - cpf_index) * digit_index
+                            )
+
+                            check_second_digit = (
+                                check_second_digit
+                                + (12 - cpf_index) * digit_index
+                            )
+
+                        rest_number_checker = check_fist_digit % 11
+
+                        first_digit = first_digit = (
+                            0
+                            if rest_number_checker < 2
+                            else 11 - rest_number_checker
+                        )
+                        check_second_digit += 2 * first_digit
+                        rest_number_checker = check_second_digit % 11
+                        if rest_number_checker < 2:
+                            second_digit = 0
+                        else:
+                            second_digit = 11 - rest_number_checker
+
+                        digit_number_checker = cpf[len(cpf) - 2 : len(cpf)]
+                        digit_number_checker_solution = (
+                            '' + str(first_digit) + '' + str(second_digit)
+                        )
+                        return (
+                            digit_number_checker
+                            == digit_number_checker_solution
+                        )
+                    except Exception as e:
+                        print('Erro !' + str(e))
+
                         return False
-                       
+
                 else:
                     return False
-    
+
             else:
                 return False
-   
-
 
     else:
         return False
