@@ -1,4 +1,4 @@
-from src.v2.cpfBefore import validate_cpf
+from src.v2.cpf import validate_cpf
 
 
 def test_valid_cpf():
