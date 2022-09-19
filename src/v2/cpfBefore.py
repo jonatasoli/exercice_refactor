@@ -1,7 +1,7 @@
 def validate(_str):
     if _str != None:
         if _str != "":
-            if len(_str) >= 11 or len(_str) <= 14:
+            if len(_str) >= 11 and len(_str) <= 14:
                 _str=_str.replace('.','').replace('.','').replace('-','').replace(" ","")
                 if not len(set(_str)) == 1:
                     try:
