@@ -51,15 +51,3 @@ def test_cpf_empty():
     with pytest.raises(Exception) as e:
         validate_cpf(_invalid_cpf)
     assert _error_expected == str(e.value)
-
-
-def test_not_create_order_with_invalid_cpf():
-    ...
-
-
-def test_create_order_with_three_items():
-    ...
-
-
-def create_order_with_discount_cupon():
-    ...
