@@ -6,6 +6,7 @@ CPF_LENGHT = 11
 DIGIT_ZERO = 0
 MIN_CPF_LENGHT = 11
 MAX_CPF_LENGHT = 14
+UNIQUE_CARACTER = 1
 
 
 def _is_valid_cpf_digits(cpf: str) -> bool:
@@ -49,7 +50,7 @@ def validate_cpf(cpf: str) -> bool:
     if not _is_valid_cpf_digits(cpf):
         raise Exception('CPF incomplete digits')
     cpf = _remove_cpf_special_caracters(cpf)
-    if len(set(cpf)) == 1:
+    if len(set(cpf)) == UNIQUE_CARACTER:
         raise Exception('CPF is the same caractere in all digits')
     try:
         digit_number_checker = cpf[len(cpf) - 2 : len(cpf)]
