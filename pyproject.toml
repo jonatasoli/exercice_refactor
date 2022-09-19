@@ -18,6 +18,13 @@ isort = "^5.10.1"
 mypy = "^0.971"
 pylint = "^2.15.2"
 
+[tool.pylint.messages-control]
+disable = [
+  "missing-class-docstring",
+  "missing-module-docstring",
+  "missing-function-docstring",
+]
+
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"

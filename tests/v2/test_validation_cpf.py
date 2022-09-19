@@ -1,4 +1,5 @@
 import pytest
+
 from src.v2.cpf import validate_cpf
 
 
