@@ -1,5 +1,4 @@
 def validate_cpf(cpf) -> bool:
-    """Validate CPF Module"""
     if cpf is not None:
         if len(cpf) >= 11 and len(cpf) <= 14:
             cpf = (
