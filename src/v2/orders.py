@@ -25,7 +25,7 @@ class Order:
 def _calculate_total_price(items: list[Items]) -> Decimal:
     total_price = 0.0
     for item in items:
-        total_price += item.price
+        total_price = total_price + item.price
     return total_price
 
 
@@ -36,7 +36,7 @@ def _calculate_total_price_with_disconts(
     return total - discont
 
 
-def create_order(cpf: str, items: dict, cupon: Decimal = 0):
+def create_order(cpf: str, items: list[Items], cupon: Decimal = 0) -> Order:
     if not validate_cpf(cpf):
         raise Exception('CPF is not valid!')
     total = _calculate_total_price(items)
