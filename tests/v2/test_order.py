@@ -32,3 +32,12 @@ def create_order_with_discount_cupon():
     assert order.total == 20.0
     assert order.user_cpf == _cpf
     assert _items == order.items
+
+def given_expired_cupon_should_not_applied():
+    _cpf = '291.524.122-88'
+    _items = [Items(name='Item test 1', price=100.0, id=1)]
+    _cupon = 80.0
+    order = create_order(_cpf, _items, _cupon)
+    assert order.total == 20.0
+    assert order.user_cpf == _cpf
+    assert _items == order.items
